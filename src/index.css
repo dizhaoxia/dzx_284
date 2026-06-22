@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'ZCOOL KuaiLe', 'Ma Shan Zheng', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #E0F7FA 0%, #FFF3E0 50%, #FCE4EC 100%);
+  background-attachment: fixed;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@layer components {
+  .btn-cute {
+    @apply px-6 py-3 rounded-full font-bold text-white transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 cursor-pointer select-none;
+  }
+
+  .card-cute {
+    @apply bg-white rounded-3xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl;
+  }
+
+  .pinyin-card {
+    @apply w-20 h-20 sm:w-24 sm:h-24 rounded-2xl flex items-center justify-center text-3xl sm:text-4xl font-bold cursor-pointer transition-all duration-200 shadow-md hover:shadow-lg hover:scale-110 active:scale-95 select-none;
+  }
+
+  .celebration-item {
+    @apply absolute text-4xl pointer-events-none;
+    animation: floatUp 1.5s ease-out forwards;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1.5);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #FF7A45, #4ECDC4);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #FF6B35, #3DBDB5);
+}
