@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Home, BookOpen, PenTool, Headphones, MousePointerClick, ChevronDown, Plus, UserRound } from 'lucide-react';
+import { Home, BookOpen, PenTool, Headphones, MousePointerClick, Mic, Pencil, BarChart3, ChevronDown, Plus, UserRound } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import UserAvatar from './UserAvatar';
 
@@ -9,6 +9,9 @@ const navItems = [
   { path: '/spelling', label: '拼读练习', icon: PenTool },
   { path: '/listening', label: '听音选字', icon: Headphones },
   { path: '/drag', label: '拼写练习', icon: MousePointerClick },
+  { path: '/tonguetwister', label: '绕口令', icon: Mic },
+  { path: '/writing', label: '书写练习', icon: Pencil },
+  { path: '/report', label: '学习报告', icon: BarChart3 },
 ];
 
 export default function NavBar() {

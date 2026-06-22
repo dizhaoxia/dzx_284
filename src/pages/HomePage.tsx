@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Trash2, BookOpen, PenTool, Headphones, MousePointerClick } from 'lucide-react';
+import { Plus, Trash2, BookOpen, PenTool, Headphones, MousePointerClick, Mic, Pencil, BarChart3 } from 'lucide-react';
 import { useUserStore } from '@/store/userStore';
 import UserAvatar from '@/components/UserAvatar';
 import Modal from '@/components/Modal';
@@ -11,6 +11,9 @@ const moduleCards = [
   { path: '/spelling', label: '拼读练习', icon: PenTool, color: 'from-blue-400 to-cyan-500', desc: '组合拼音学习' },
   { path: '/listening', label: '听音选字', icon: Headphones, color: 'from-green-400 to-emerald-500', desc: '听发音选拼音' },
   { path: '/drag', label: '拼写练习', icon: MousePointerClick, color: 'from-purple-400 to-violet-500', desc: '拖拽组合拼音' },
+  { path: '/tonguetwister', label: '绕口令闯关', icon: Mic, color: 'from-rose-400 to-pink-500', desc: '挑战口才发音' },
+  { path: '/writing', label: '书写练习', icon: Pencil, color: 'from-amber-400 to-orange-500', desc: '练习拼音书写' },
+  { path: '/report', label: '学习报告', icon: BarChart3, color: 'from-indigo-400 to-purple-500', desc: '查看学习进度' },
 ];
 
 export default function HomePage() {
@@ -132,7 +135,7 @@ export default function HomePage() {
 
         <div>
           <h2 className="text-2xl font-bold text-gray-700 mb-6">📚 选择学习模块</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {moduleCards.map(({ path, label, icon: Icon, color, desc }) => (
               <button
                 key={path}

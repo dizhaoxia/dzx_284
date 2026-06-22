@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import type { UserProfile, ModuleType, LearningProgress } from '@/types';
+import type { UserProfile, ModuleType, LearningProgress, PinyinType } from '@/types';
 import {
   getUsers,
   addUser as storageAddUser,
@@ -10,6 +10,7 @@ import {
   getUserProgress,
   updateModuleProgress,
   generateId,
+  recordReportPractice,
 } from '@/utils/storage';
 
 interface UserState {
@@ -23,6 +24,7 @@ interface UserState {
   getCurrentUser: () => UserProfile | undefined;
   loadProgress: () => void;
   recordProgress: (module: ModuleType, isCorrect: boolean) => void;
+  recordPracticeWithPinyin: (module: ModuleType, pinyin: string, type: PinyinType, isCorrect: boolean) => void;
 }
 
 export const useUserStore = create<UserState>((set, get) => ({
@@ -84,6 +86,15 @@ export const useUserStore = create<UserState>((set, get) => ({
     const { currentUserId } = get();
     if (!currentUserId) return;
     updateModuleProgress(currentUserId, module, isCorrect);
+    const progress = getUserProgress(currentUserId);
+    set({ progress });
+  },
+
+  recordPracticeWithPinyin: (module: ModuleType, pinyin: string, type: PinyinType, isCorrect: boolean) => {
+    const { currentUserId } = get();
+    if (!currentUserId) return;
+    updateModuleProgress(currentUserId, module, isCorrect);
+    recordReportPractice(currentUserId, pinyin, type, module, isCorrect);
     const progress = getUserProgress(currentUserId);
     set({ progress });
   },

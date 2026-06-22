@@ -5,7 +5,7 @@ export interface UserProfile {
   createdAt: string;
 }
 
-export type ModuleType = 'chart' | 'spelling' | 'listening' | 'drag';
+export type ModuleType = 'chart' | 'spelling' | 'listening' | 'drag' | 'tonguetwister' | 'writing';
 
 export interface LearningProgress {
   id: string;
@@ -50,4 +50,80 @@ export interface QuizOption {
 export interface DragTarget {
   target: 'shengmu' | 'yunmu';
   value: string;
+}
+
+export type TwisterDifficulty = 'easy' | 'medium' | 'hard';
+
+export interface TwisterItem {
+  id: string;
+  text: string;
+  pinyin: string;
+  highlightPinyins: string[];
+  difficulty: TwisterDifficulty;
+  title: string;
+}
+
+export interface TwisterProgress {
+  id: string;
+  completed: boolean;
+  stars: number;
+  bestTime?: number;
+}
+
+export interface UserTwisterData {
+  userId: string;
+  unlockedLevel: TwisterDifficulty;
+  progress: Record<string, TwisterProgress>;
+}
+
+export type StrokePoint = { x: number; y: number };
+
+export interface Stroke {
+  points: StrokePoint[];
+  direction: string;
+}
+
+export interface WritingStrokeData {
+  pinyin: string;
+  strokes: Stroke[];
+  boundingBox: { width: number; height: number };
+}
+
+export interface UserWritingData {
+  userId: string;
+  masteredPinyins: string[];
+  writingRecords: Record<string, { correct: number; total: number; lastPractice: string }>;
+}
+
+export interface PinyinMastery {
+  pinyin: string;
+  type: PinyinType;
+  status: 'mastered' | 'learning' | 'not_started';
+  correctRate: number;
+}
+
+export interface DailyStat {
+  date: string;
+  practiceCount: number;
+  correctCount: number;
+  streakCorrect: number;
+  maxStreak: number;
+}
+
+export interface WeakPoint {
+  pinyin: string;
+  type: PinyinType;
+  errorCount: number;
+  totalCount: number;
+  modules: ModuleType[];
+}
+
+export interface UserReportData {
+  userId: string;
+  masteryMap: Record<string, { type: PinyinType; correct: number; total: number }>;
+  errorRecords: Record<string, { type: PinyinType; count: number; modules: ModuleType[] }>;
+  dailyStats: Record<string, DailyStat>;
+  currentStreak: number;
+  maxStreak: number;
+  lastPracticeDate: string;
 }

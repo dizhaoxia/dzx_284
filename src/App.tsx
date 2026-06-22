@@ -6,6 +6,9 @@ import PinyinChart from '@/pages/PinyinChart';
 import SpellingPractice from '@/pages/SpellingPractice';
 import ListeningQuiz from '@/pages/ListeningQuiz';
 import DragSpelling from '@/pages/DragSpelling';
+import TongueTwister from '@/pages/TongueTwister';
+import WritingPractice from '@/pages/WritingPractice';
+import LearningReport from '@/pages/LearningReport';
 
 export default function App() {
   const loadUsers = useUserStore((state) => state.loadUsers);
@@ -22,6 +25,9 @@ export default function App() {
         <Route path="/spelling" element={<SpellingPractice />} />
         <Route path="/listening" element={<ListeningQuiz />} />
         <Route path="/drag" element={<DragSpelling />} />
+        <Route path="/tonguetwister" element={<TongueTwister />} />
+        <Route path="/writing" element={<WritingPractice />} />
+        <Route path="/report" element={<LearningReport />} />
       </Routes>
     </Router>
   );
